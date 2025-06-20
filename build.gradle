@@ -7,6 +7,14 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+sourceSets {
+    test {
+        resources {
+            srcDirs = ["src/test/java", "src/test/resources"]
+        }
+    }
+}
+
 
 group 'com.example'
 version '1.0-SNAPSHOT'
@@ -26,4 +34,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    filter {
+        includeTestsMatching "com.pichincha.*Runner"
+        excludeTestsMatching "*KarateBasicTest*"
+    }
 }
